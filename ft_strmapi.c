@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 17:22:21 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/12 12:57:59 by melperri         ###   ########.fr       */
+/*   Created: 2020/10/09 17:27:28 by melperri          #+#    #+#             */
+/*   Updated: 2020/10/09 18:04:46 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    int i;
-    int res;
-    int sign;
-    
-    i = 0;
-    sign = 1;
-    res = 0;
-    while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-        i++;
-    if (str[i] == '+')
-        i++;
-    else if (str[i] == '-')
-    {
-        sign *= -1;
-        i++;
-    }
-    while (ft_isdigit(str[i]))
-    {
-        res = res * 10 + (str[i] - 48);
-        i++;
-    }
-    return (res * sign);
+	char			*str;
+	unsigned int	i;
+	unsigned int	len;
+
+	str = NULL;
+	len = ft_strlen(s);
+	if (!(str = malloc(sizeof(str) * len + 1)))
+		return (NULL);
+	ft_strlcpy(str, s, len + 1);
+	i = 0;
+	while (str[i])
+	{
+		str[i] = (*f)(i, str[i]);
+		i++;
+	}
+	return (str);
 }

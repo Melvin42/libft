@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:25:32 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/08 17:52:46 by zog              ###   ########.fr       */
+/*   Updated: 2020/10/09 18:18:55 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_strncpyplus(char *dest, char const *src, int wordsize, int j)
 		i++;
 		j++;
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -92,9 +92,25 @@ char	**ft_split(char const *str, char c)
 	int		cmpt;
 
 	cmpt = countword(str, c);
-	if (!(split = malloc(sizeof(char *) * (cmpt + 1))))
+	if (!(split = malloc(sizeof(split) * (cmpt + 1))))
 		return (NULL);
 	split = dupword(str, c, split, 0);
 	split[cmpt] = NULL;
 	return (split);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char	**split;
+	int i;
+
+	i = 0;
+	split = ft_split("hello les poulets", ' ');
+	while (i < 4)
+	{
+		printf("%s\n", split[i]);
+		i++;
+	}
+	return (0);
+}*/
