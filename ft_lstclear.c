@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 17:22:21 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/12 12:57:59 by melperri         ###   ########.fr       */
+/*   Created: 2020/10/14 11:59:17 by melperri          #+#    #+#             */
+/*   Updated: 2020/10/14 17:18:58 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi(const char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    int i;
-    int res;
-    int sign;
-    
-    i = 0;
-    sign = 1;
-    res = 0;
-    while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-        i++;
-    if (str[i] == '+')
-        i++;
-    else if (str[i] == '-')
-    {
-        sign *= -1;
-        i++;
-    }
-    while (ft_isdigit(str[i]))
-    {
-        res = res * 10 + (str[i] - 48);
-        i++;
-    }
-    return (res * sign);
+	t_list	*tmp;
+
+	if (*lst)
+		tmp = *lst;
+	while (*lst)
+	{
+		if (*lst)
+			tmp->next = *lst;
+		else
+			tmp = NULL;
+		(*del)((t_list *)lst);
+		*lst = tmp;
+	}
 }

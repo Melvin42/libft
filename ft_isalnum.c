@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:22:36 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/08 17:22:52 by melperri         ###   ########.fr       */
+/*   Updated: 2020/10/13 17:41:04 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')) ||
-	((c >= '0') && (c <= '9')))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return 1;
 	return 0; 
 }
