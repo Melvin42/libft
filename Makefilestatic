@@ -1,0 +1,32 @@
+OBJS	= $(SRCS:.c=.o)
+
+NAME	= libft.a
+
+AR		= ar rc
+
+GCC		= gcc
+
+RM		= rm -rf
+
+CFLAGS	= -Wall -Wextra -Werror
+
+.c.o:
+			$(GCC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+
+$(NAME):	$(OBJS)
+			$(AR) $(NAME) $(OBJS)
+			
+all:		$(NAME)
+
+clean:
+			$(RM) $(OBJS)
+
+fclean:		clean
+			$(RM) $(NAME)
+
+re:			fclean all
+
+bonus:		$(OBJS)
+			$(AR) $(NAME) $(OBJS)
+
+.PHONY:		all clean fclean re

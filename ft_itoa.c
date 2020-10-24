@@ -21,7 +21,7 @@ char	*ft_itoa(int n)
 	len = 0;
 	nb = n;
 	nb = (n < 0) ? nb * -1 : nb;
-	len = (n < 0) ? 1 : 0;
+	len = (n < 0) ? 2 : 1;
 	while (nb > 9)
 	{
 		nb = nb / 10;
@@ -29,12 +29,12 @@ char	*ft_itoa(int n)
 	}
 	if (!(s = malloc(sizeof(s) * len + 1)))
 		return (NULL);
-	s[len + 1] = '\0';
+	s[len] = '\0';
 	nb = n;
 	nb = (n < 0) ? nb * -1 : nb; 
-	while (len >= 0)
+	while (len - 1 >= 0)
 	{
-		s[len] = nb % 10 + 48;
+		s[len - 1] = nb % 10 + 48;
 		nb = nb / 10;
 		len--;
 	}
@@ -43,7 +43,8 @@ char	*ft_itoa(int n)
 }
 /*
 #include <stdio.h>
-int main()
+
+int	main(void)
 {
 	printf("%s\n", ft_itoa(2147483647));
 	printf("%s\n", ft_itoa(-2147483648));

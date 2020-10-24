@@ -44,32 +44,19 @@ SRCS	= ft_isalpha.c \
 
 CC = clang
 
-CFLAGS = -fPIC -Wall -Wextra -Wextra
+CFLAGS = -fPIC -Wall -Wextra -Wextra  # C flags
 
-LDFLAGS = -shared
+LDFLAGS = -shared   # linking flags
 
-RM = rm -f
+RM = rm -f   # rm command
 
-NAME = libft.a
-
-AR = ar -rc
-
-SONAME = libft.so
+TARGET_LIB = libft.so  # target lib
 
 OBJS = $(SRCS:.c=.o)
 
-.c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+so: ${TARGET_LIB}
 
-all : ${NAME}
-
-so: ${SONAME}
-
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-
-
-$(SONAME): $(OBJS)
+$(TARGET_LIB): $(OBJS)
 	$(CC) ${LDFLAGS} -o $@ $^
 
 $(SRCS:.c=.d):%.d:%.c
@@ -77,19 +64,11 @@ $(SRCS:.c=.d):%.d:%.c
 
 include $(SRCS:.c=.d)
 
-
 clean:
-	${RM} ${OBJS}
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
 
-fclean: clean
-	${RM} $(NAME)
+re: clean so
 
-soclean: 
-	-${RM} ${SONAME} $(SRCS:.c=.d)
-
-re: clean all
-
-sore: soclean so
 
 coffee:
 	@clear
@@ -192,4 +171,4 @@ coffee:
 	@echo '         ""--..,,_____            _____,,..--"""'''
 	@echo '                      """------"""'
 
-.PHONY: all so clean fclean soclean re sore coffee
+.PHONY: so re clean coffee
