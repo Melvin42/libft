@@ -12,12 +12,15 @@
 
 #include "libft.h"
 
+/*
+** Alloue (avec malloc(3)) et retourne un tableau de chaines de caracteres
+** obtenu en séparant ’s’ à l’aide du caractère ’c’, utilisé comme délimiteur.
+** Le tableau doit être terminé par NULL.
+*/
+
 size_t     issep(char a, char c)
 {
-    if (a == c)
-        return (1);
-    else
-        return (0);
+    return (a == c);
 }
 
 size_t		countword(char const *s, char c)
@@ -65,7 +68,7 @@ char	**dupword(char const *s, char c, char **split, size_t wordsize)
 			{
 				if (!(split[j] = malloc(sizeof(char) * wordsize)))
 					return (NULL);
-				ft_bzero(split[j], wordsize);
+				//ft_bzero(split[j], wordsize);
 				ft_memcpy(split[j], s + i - wordsize, wordsize);
 				split[j][wordsize] = '\0';
 				j++;
@@ -82,6 +85,8 @@ char	**ft_split(char const *s, char c)
 	size_t		cmpt;
 	size_t	wordsize;
 
+	if (!s || !c)
+		return (NULL);
 	cmpt = countword(s, c);
 	if (!(split = malloc(sizeof(char *) * (cmpt + 1))))
 		return (NULL);
@@ -91,22 +96,23 @@ char	**ft_split(char const *s, char c)
 	return (split);
 }
 /*
-int	main(void)
-{
-	char	asplit[] = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
-	char	**split;
-	size_t i;
-
-	i = 0;
-	split = ft_split(asplit, ' ');
-	//split = ft_split("", 'z');
-	while (i < 12)
-	{
-		printf("%s\n", split[i]);
-		//ft_putstr_fd(split[i], 1);
-		//ft_putchar_fd('\n', 1);
-		i++;
-	}
-	return (0);
-}
+**int	main(void)
+**{
+**	char	asplit[] = "   lorem   ipsum dolor     sit amet, consectetur   
+**adipiscing elit. Sed non risus. Suspendisse   ";
+**	char	**split;
+**	size_t i;
+**
+**	i = 0;
+**	split = ft_split(asplit, ' ');
+**	//split = ft_split("", 'z');
+**	while (i < 12)
+**	{
+**		printf("%s\n", split[i]);
+**		//ft_putstr_fd(split[i], 1);
+**		//ft_putchar_fd('\n', 1);
+**		i++;
+**	}
+**	return (0);
+**}
 */

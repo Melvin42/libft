@@ -12,13 +12,20 @@
 
 #include "libft.h"
 
+/*
+** Alloue (avec malloc(3)) et retourne une nouvelle
+** chaine, résultat de la concaténation de s1 et s2.
+*/
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 
-	if (!(join = malloc(sizeof(join) * (ft_strlen(s1) + ft_strlen(s2)) + 1)))
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1)))
 		return (NULL);
 	i = 0;
 	while (s1[i])

@@ -12,21 +12,30 @@
 
 #include "libft.h"
 
-char	*ft_strrchr(const char	*s, int	c)
-{
-	c = (unsigned char)c;
-	int i;
+/*
+** The ft_strrchr() function returns a pointer to the last occurrence of the
+** character c in the string s.
+*/
 
-	i = 0;
-	while (s[i])
-		i++;
-	if (c == '\0')
-		return ((char	*)&s[i + 1]);
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = ft_strlen(s);
+	c = (unsigned char)c;
 	while (i >= 0)
 	{
 		if (s[i] == c)
-			return ((char	*)&s[i]);
+			return ((char *)&s[i]);
 		i--;
 	}
-	return 0;
+	return (NULL);
 }
+/*
+int	main(int ac, const char **av)
+{
+	(void)ac;
+	printf("%s\n", ft_strrchr(av[1], 'X'));
+	return (0);
+}
+*/

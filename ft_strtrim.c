@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
+/*
+** Alloue (avec malloc(3)) et retourne une copie de la chaine ’s1’, sans les
+** caractères spécifiés dans ’set’ au début et à la fin de la chaine de
+** caractères.
+*/
 
 int		ft_isset(char c, char const *set)
 {
@@ -30,16 +35,19 @@ char	*ft_strtrim(char const *s, char const *set)
 	unsigned int	i;
 	size_t			size;
 
+	if (!s || !set)
+		return (NULL);
 	i = 0;
 	size = ft_strlen(s);
 	while (ft_isset(s[i], set))
 		i++;
-	while (s[i] != '\0' && ft_isset(s[size - 1], set))
+	while (s[i] && ft_isset(s[size - 1], set))
 		size--;
 	size = size - i;
 	str = ft_substr(s, i, size);
 	return (str);
 }
+
 /*
 int	main()
 {

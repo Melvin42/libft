@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdio.h>
+# include <limits.h>
 # include <ctype.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -25,6 +26,29 @@ typedef struct	s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+int				ft_isblank(int c);
+int				ft_iscntrl(int c);
+int				ft_isgraph(int c);
+int				ft_ispunct(int c);
+int				ft_isspace(int c);
+int				ft_islower(int c);
+int				ft_isupper(int c);
+int				ft_isxdigit(int c);
+//ft_str_is_alpha
+//ft_str_is_numeric
+//ft_str_is_printable
+//ft_str_is_lowercase
+//ft_str_is_uppercase
+//ft_strlowcase
+//ft_strupcase
+//ft_strcapitalize
+//ft_strcasecmp
+//ft_strncasecmp
+//ft_strcasestr
+//ft_strndup
+//ft_strtok
+//ft_itoa_base
 
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
@@ -47,7 +71,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
-int				ft_atoi(const char *str);
+int				ft_atoi(const char *nptr);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_strdup(const char *src);
 char			*ft_substr(char const *s, unsigned int start, size_t len);

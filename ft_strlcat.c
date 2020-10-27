@@ -18,17 +18,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 	size_t	total;
 
-	i = 0;
-	j = 0;
-	total = 0;
-	while (dst[i])
-		i++;
-	while (src[j])
-		j++;
+	i = ft_strlen(dst);
+	j = ft_strlen(src);
 	if (i > size)
 		total = size + j;
-	if (i <= size)
+	else
 		total = i + j;
+	if (total >= size && size <= i)
+		return (total);
 	j = 0;
 	while (src[j] && i + 1 < size)
 	{
@@ -42,9 +39,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 /*
 int	main()
 {
-	char dest[] = "rrrrrr";
+	char *dest;
 //	char dest2[] = "coucou";
-	printf("%ld\n", ft_strlcat(dest, "lorem ipsum dolor sit amet", 6));
+	
+	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
+		return (0);
+	memset(dest, 0, 15);
+	memset(dest, 'r', 15);
+	
+	printf("%ld\n", ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
 	printf("%s\n", dest);
 //	printf("%ld\n", strlcat(dest2, "lorem ipsum dolor sit amet", 6));
 	return (0);

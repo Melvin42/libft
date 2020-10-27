@@ -1,50 +1,58 @@
-SRCS	= ft_isalpha.c \
-		  ft_memccpy.c \
-		  ft_strjoin.c \
-		  ft_strncmp.c \
-		  ft_atoi.c \
-		  ft_itoa.c \
-		  ft_isascii.c \
-		  ft_memcpy.c \
-		  ft_memmove.c \
-		  ft_memchr.c \
-		  ft_memcmp.c \
-		  ft_strnstr.c \
-		  ft_split.c \
-		  ft_strlcat.c \
-		  ft_strrchr.c \
-		  ft_calloc.c \
-		  ft_bzero.c \
-		  ft_isdigit.c \
-		  ft_memset.c \
-		  ft_strchr.c \
-		  ft_strlcpy.c \
-		  ft_tolower.c \
-		  ft_isalnum.c \
-		  ft_isprint.c \
-		  ft_strmapi.c \
-		  ft_putchar_fd.c \
-		  ft_putstr_fd.c \
-		  ft_putendl_fd.c \
-		  ft_putnbr_fd.c \
-		  ft_strdup.c \
-		  ft_strlen.c \
-		  ft_toupper.c \
-		  ft_strtrim.c \
-		  ft_substr.c \
-		  ft_lstnew.c \
-		  ft_lstadd_front.c \
-		  ft_lstsize.c \
-		  ft_lstclear.c \
-		  ft_lstlast.c \
-		  ft_lstiter.c \
-		  ft_lstadd_back.c \
-		  ft_lstdelone.c \
+SRCS	= ft_isblank.c \
+			ft_iscntrl.c \
+			ft_isgraph.c \
+			ft_ispunct.c \
+			ft_isspace.c \
+			ft_islower.c \
+			ft_isupper.c \
+			ft_isxdigit.c \
+			ft_memset.c \
+			ft_bzero.c \
+			ft_memcpy.c \
+			ft_memccpy.c \
+			ft_memmove.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_strlen.c \
+			ft_isalpha.c \
+			ft_isdigit.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_isprint.c \
+			ft_tolower.c \
+			ft_toupper.c \
+			ft_strchr.c \
+			ft_strrchr.c \
+			ft_strncmp.c \
+			ft_strlcpy.c \
+			ft_strlcat.c \
+			ft_strnstr.c \
+			ft_atoi.c \
+			ft_calloc.c \
+			ft_strdup.c \
+			ft_substr.c \
+			ft_strjoin.c \
+			ft_strtrim.c \
+			ft_split.c \
+			ft_itoa.c \
+			ft_strmapi.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c \
+			ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
 		#  ft_lstmap.c \
 
 CC = clang
 
-CFLAGS = -fPIC -Wall -Wextra -Wextra
+CFLAGS = -fPIC -Wall -Wextra -Werror
 
 LDFLAGS = -shared
 
@@ -58,38 +66,36 @@ SONAME = libft.so
 
 OBJS = $(SRCS:.c=.o)
 
-.c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
+.c.o:	
+		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) 
 
-all : ${NAME}
+all :		${NAME}
 
-so: ${SONAME}
+so:			${SONAME}
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME):	$(OBJS)
+		$(AR) $(NAME) $(OBJS)
 
-
-$(SONAME): $(OBJS)
-	$(CC) ${LDFLAGS} -o $@ $^
+$(SONAME):	$(OBJS)
+		$(CC) ${LDFLAGS} -o $@ $^
 
 $(SRCS:.c=.d):%.d:%.c
-	$(CC) $(CFLAGS) -MM $< >$@
+		$(CC) $(CFLAGS) -MM $< >$@
 
 include $(SRCS:.c=.d)
 
-
 clean:
-	${RM} ${OBJS}
+		${RM} ${OBJS}
 
-fclean: clean
-	${RM} $(NAME)
+fclean:		clean
+		${RM} $(NAME)
 
 soclean: 
-	-${RM} ${SONAME} $(SRCS:.c=.d)
+		-${RM} ${SONAME} $(SRCS:.c=.d)
 
-re: clean all
+re:			clean all
 
-sore: soclean so
+sore:		soclean so
 
 coffee:
 	@clear
@@ -192,4 +198,4 @@ coffee:
 	@echo '         ""--..,,_____            _____,,..--"""'''
 	@echo '                      """------"""'
 
-.PHONY: all so clean fclean soclean re sore coffee
+.PHONY:			all so clean fclean soclean re sore coffee

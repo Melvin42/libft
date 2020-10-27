@@ -12,20 +12,25 @@
 
 #include "libft.h"
 
+/*
+** The ft_memccpy() function copies no more than n bytes from memory area src
+** to memory area dest, stopping when the character c is found.
+*/
+
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < n && (((const unsigned char *)src)[i] != (unsigned char)c))
+	while (i < n && (((unsigned char *)src)[i] != (unsigned char)c))
 	{
-		((unsigned char *)dest)[0] = ((const unsigned char *)src)[i];
+		((unsigned char *)dest)[0] = ((unsigned char *)src)[i];
 		i++;
 		dest++;
 	}
-	if ((((const unsigned char *)src)[i] == (unsigned char)c))
+	if (((unsigned char *)src)[i] == (unsigned char)c)
 	{
-		((unsigned char *)dest)[0] = ((const unsigned char *)src)[i];
+		((unsigned char *)dest)[0] = ((unsigned char *)src)[i];
 		dest++;
 	}
 	else
