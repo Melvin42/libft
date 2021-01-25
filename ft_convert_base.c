@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 02:32:51 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 15:06:25 by melperri         ###   ########.fr       */
+/*   Created: 2020/08/14 11:49:08 by melperri          #+#    #+#             */
+/*   Updated: 2021/01/25 13:39:04 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	if (fd != -1)
-		write(fd, &c, 1);
+	int		nb;
+	char	*dest;
+
+	if (!((checkbase(base_from) && checkbase(base_to))))
+		return (NULL);
+	nb = ft_atoi_base(nbr, base_from);
+	dest = ft_itoa_base(nb, base_to);
+	return (dest);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
+/*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 17:29:09 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/08 17:29:14 by melperri         ###   ########.fr       */
+/*   Created: 2020/11/18 01:57:47 by melperri          #+#    #+#             */
+/*   Updated: 2020/11/18 01:58:24 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-int	main(int ac, const char **av)
-{
-	(void)ac;
-	printf("%s\n", ft_strrchr(av[1], 'X'));
-	return (0);
-}
-*/

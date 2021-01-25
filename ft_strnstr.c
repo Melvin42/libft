@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:31:15 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/13 14:22:23 by melperri         ###   ########.fr       */
+/*   Updated: 2021/01/25 14:02:24 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	while (big[i] && i < len)
 	{
 		j = 0;
-		if (big[i] == little[j])
-		{
-			while (big[i] == little[j] && little[j] && i < len)
-			{
-				j++;
-				i++;
-			}
-			if ((little[j] == '\0') && little[j - 1] == big[i - 1])
-				return ((char *)&big[i - j]);
-			if (j == ft_strlen(little))
-				i -= j;
-		}
+		while (little[j] && big[i + j] == little[j] && i + j < len)
+			j++;
+		if ((little[j] == '\0'))
+			return ((char *)&big[i]);
 		i++;
 	}
 	return ((char *)NULL);
 }
-/*
-int	main()
-{
-	printf("%s\n", ft_strnstr("lorem ipsum dolor sit amet", "ipsum", 30));
-	return (0);
-}
-*/

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy_rev.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 02:32:51 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 15:06:25 by melperri         ###   ########.fr       */
+/*   Created: 2020/11/20 00:28:29 by melperri          #+#    #+#             */
+/*   Updated: 2021/01/06 16:09:19 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+/*
+** The ft_memcpy() function copies n bytes from memory area src to memory area
+** dest. The memory areas must not overlap.
+** Use ft_memmove() if the memory areas do overlap.
+*/
+
+void	*ft_memcpy_rev(void *dest, const void *src, size_t n)
 {
-	if (fd != -1)
-		write(fd, &c, 1);
+	if (n == 0 || dest == src)
+		return (dest);
+	while (n--)
+		((unsigned char	*)dest)[n] = ((unsigned char *)src)[n];
+	return (dest);
 }

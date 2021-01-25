@@ -17,7 +17,7 @@
 ** to by s with the constant byte c.
 */
 
-void	*ft_memset(void	*s, int	c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
 
@@ -28,22 +28,3 @@ void	*ft_memset(void	*s, int	c, size_t n)
 		((unsigned char	*)s)[i++] = (unsigned char)c;
 	return (s);
 }
-
-/*
-** int	main()
-** {
-** 	char	*s;
-** 	char	*test = "test";
-** 	int		i;
-** 
-** 	if (!(s = malloc(sizeof(char) * 4)))
-** 		return (0);
-** 	i = -1;
-** 	while (test[i++])
-** 		s[i] = test[i];
-** 	s[i] = '\0';
-** 	ft_memset((void *)s, 'X', 4);
-** 	printf("%s\n", (char *)s);
-** 	return (0);
-** }
-*/

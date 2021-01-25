@@ -6,24 +6,13 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:25:32 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/09 18:18:55 by melperri         ###   ########.fr       */
+/*   Updated: 2021/01/25 13:34:15 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Alloue (avec malloc(3)) et retourne un tableau de chaines de caracteres
-** obtenu en séparant ’s’ à l’aide du caractère ’c’, utilisé comme délimiteur.
-** Le tableau doit être terminé par NULL.
-*/
-
-size_t     issep(char a, char c)
-{
-    return (a == c);
-}
-
-size_t		countword(char const *s, char c)
+static size_t	countword(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -46,7 +35,19 @@ size_t		countword(char const *s, char c)
 	return (count);
 }
 
-char	**dupword(char const *s, char c, char **split, size_t wordsize)
+static char		**freesplit(char **split, int i)
+{
+	while (i >= 0)
+	{
+		free(split[i]);
+		i--;
+	}
+	free(split);
+	split = NULL;
+	return (split);
+}
+
+static char		**dupword(char const *s, char c, char **split, size_t wordsize)
 {
 	size_t	i;
 	size_t	j;
@@ -57,35 +58,31 @@ char	**dupword(char const *s, char c, char **split, size_t wordsize)
 	{
 		if (s[i] == c)
 			i++;
-		else
+		while ((s[i] != c) && s[i])
 		{
-			while ((s[i] != c) && s[i])
-			{
-				i++;
-				wordsize++;
-			}
-			if (wordsize != 0)
-			{
-				if (!(split[j] = malloc(sizeof(char) * wordsize)))
-					return (NULL);
-				//ft_bzero(split[j], wordsize);
-				ft_memcpy(split[j], s + i - wordsize, wordsize);
-				split[j][wordsize] = '\0';
-				j++;
-				wordsize = 0;
-			}
+			i++;
+			wordsize++;
+		}
+		if (wordsize != 0)
+		{
+			if (!(split[j] = malloc(sizeof(char) * wordsize + 1)))
+				return (freesplit(split, j));
+			ft_memcpy(split[j], s + i - wordsize, wordsize);
+			split[j][wordsize] = '\0';
+			j++;
+			wordsize = 0;
 		}
 	}
 	return (split);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	char	**split;
+	char		**split;
 	size_t		cmpt;
-	size_t	wordsize;
+	size_t		wordsize;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	cmpt = countword(s, c);
 	if (!(split = malloc(sizeof(char *) * (cmpt + 1))))
@@ -95,24 +92,3 @@ char	**ft_split(char const *s, char c)
 	split[cmpt] = NULL;
 	return (split);
 }
-/*
-**int	main(void)
-**{
-**	char	asplit[] = "   lorem   ipsum dolor     sit amet, consectetur   
-**adipiscing elit. Sed non risus. Suspendisse   ";
-**	char	**split;
-**	size_t i;
-**
-**	i = 0;
-**	split = ft_split(asplit, ' ');
-**	//split = ft_split("", 'z');
-**	while (i < 12)
-**	{
-**		printf("%s\n", split[i]);
-**		//ft_putstr_fd(split[i], 1);
-**		//ft_putchar_fd('\n', 1);
-**		i++;
-**	}
-**	return (0);
-**}
-*/

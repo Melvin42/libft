@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 11:59:17 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/14 17:18:58 by melperri         ###   ########.fr       */
+/*   Updated: 2020/11/16 18:52:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-  t_list	*tmp;
+	t_list	*tmp;
 
 	while (*lst)
 	{

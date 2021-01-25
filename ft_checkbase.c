@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_checkbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 02:32:51 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 15:06:25 by melperri         ###   ########.fr       */
+/*   Created: 2021/01/25 13:45:23 by melperri          #+#    #+#             */
+/*   Updated: 2021/01/25 13:45:30 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		checkbase(char *base)
 {
-	if (fd != -1)
-		write(fd, &c, 1);
+	int	i;
+	int	j;
+
+	i = 0;
+	if (ft_strlen(base) <= 1)
+		return (0);
+	while (base[i])
+	{
+		if ((base[i] >= 9 && base[i] <= 13) || base[i] == ' ')
+			return (0);
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

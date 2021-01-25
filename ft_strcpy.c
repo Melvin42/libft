@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <melperri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 02:32:51 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 15:06:25 by melperri         ###   ########.fr       */
+/*   Created: 2020/11/17 19:51:44 by user42            #+#    #+#             */
+/*   Updated: 2020/11/18 20:16:59 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	if (fd != -1)
-		write(fd, &c, 1);
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

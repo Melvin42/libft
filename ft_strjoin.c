@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
+/*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 17:26:35 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/09 11:39:33 by melperri         ###   ########.fr       */
+/*   Created: 2020/11/18 01:56:30 by melperri          #+#    #+#             */
+/*   Updated: 2020/11/18 01:56:32 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*join;
+	char		*join;
 	size_t		i;
 	size_t		j;
 
