@@ -57,6 +57,8 @@ SRCS	= ft_isblank.c \
 		  ft_utoa_base.c \
 		  ft_utoa_base.c \
 		  ft_ultoa_base.c \
+		  get_next_line.c \
+		  get_next_line_utils.c \
 
 SRCS_BONUS = ft_lstnew.c \
 		   ft_lstadd_front.c \
@@ -66,7 +68,9 @@ SRCS_BONUS = ft_lstnew.c \
 		   ft_lstiter.c \
 		   ft_lstadd_back.c \
 		   ft_lstdelone.c \
-		   ft_lstmap.c
+		   ft_lstmap.c \
+		   get_next_line_bonus.c \
+		   get_next_line_utils_bonus.c \
 
 CC = clang
 
