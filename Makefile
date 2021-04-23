@@ -22,6 +22,7 @@ LST_DIR		= lst
 MEM_DIR		= mem
 PUT_DIR		= put
 STR_DIR		= str
+PRINTF_DIR	= printf
 
 ## Compilating Utilities
 
@@ -62,6 +63,14 @@ STR_FT	 = ft_split ft_strdup ft_str_is_numeric ft_strlcat ft_strnstr \
 		   ft_strcpy ft_str_is_lowercase ft_strjoin ft_strlen ft_strncmp \
 		   ft_strtrim
 
+PRINTF_FT= ft_flags ft_printf_convert ft_printf_hexmaj ft_printf_int_plus \
+		   ft_printf_null_addr ft_pars_flags ft_printf_hex_hh \
+		   ft_printf_hexmin2 ft_printf_int_pos ft_printf_short ft_printf_addr \
+		   ft_printf_hex_ll ft_printf_hexmin ft_printf_ll ft_printf_string2 \
+		   ft_printf ft_printf_hex_long ft_printf_hh ft_printf_long \
+		   ft_printf_string ft_printf_convert2 ft_printf_hexmaj2 \
+		   ft_printf_int_neg ft_printf_modifier
+
 ## List of Utilities
 
 SRC = $(ALLOC_FT:%=$(SRC_DIR)/$(ALLOC_DIR)/%.c) \
@@ -71,7 +80,8 @@ SRC = $(ALLOC_FT:%=$(SRC_DIR)/$(ALLOC_DIR)/%.c) \
 	$(LST_FT:%=$(SRC_DIR)/$(LST_DIR)/%.c) \
 	$(MEM_FT:%=$(SRC_DIR)/$(MEM_DIR)/%.c) \
 	$(PUT_FT:%=$(SRC_DIR)/$(PUT_DIR)/%.c) \
-	$(STR_FT:%=$(SRC_DIR)/$(STR_DIR)/%.c)
+	$(STR_FT:%=$(SRC_DIR)/$(STR_DIR)/%.c) \
+	$(PRINTF_FT:%=$(SRC_DIR)/$(PRINTF_DIR)/%.c)
 
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
@@ -83,7 +93,8 @@ OBJ_DIRS = $(OBJ_DIR) \
 	$(LST_DIR:%=$(OBJ_DIR)/%) \
 	$(MEM_DIR:%=$(OBJ_DIR)/%) \
 	$(PUT_DIR:%=$(OBJ_DIR)/%) \
-	$(STR_DIR:%=$(OBJ_DIR)/%)
+	$(STR_DIR:%=$(OBJ_DIR)/%) \
+	$(PRINTF_DIR:%=$(OBJ_DIR)/%)
 
 ## Rules of Makefile
 

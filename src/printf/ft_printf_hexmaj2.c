@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_int_pos.c                                :+:      :+:    :+:   */
+/*   ../../inc/ft_printf.hexmaj2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 08:46:24 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/27 19:02:33 by melperri         ###   ########.fr       */
+/*   Created: 2021/01/27 19:57:26 by melperri          #+#    #+#             */
+/*   Updated: 2021/01/27 19:57:29 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-static void	ft_preci_int_moins(t_flags *flags, char *s)
+static void	ft_preci_hexmaj_moins(t_flags *flags, char *s)
 {
 	int	i;
 
 	i = -1;
-	ft_flag_space(flags, 1);
+	if (flags->hash)
+		flags->ret += write(1, "0X", 2);
 	while (++i < flags->preci - flags->len)
 		flags->ret += write(1, "0", 1);
 	flags->ret += write(1, s, flags->len);
@@ -26,7 +27,7 @@ static void	ft_preci_int_moins(t_flags *flags, char *s)
 		flags->ret += write(1, " ", 1);
 }
 
-static void	ft_preci_int_no_moins(t_flags *flags, char *s)
+static void	ft_preci_hexmaj_no_moins(t_flags *flags, char *s)
 {
 	int	i;
 
@@ -37,22 +38,23 @@ static void	ft_preci_int_no_moins(t_flags *flags, char *s)
 	else
 		while (++i < flags->width - flags->len)
 			flags->ret += write(1, " ", 1);
+	if (flags->hash)
+		flags->ret += write(1, "0X", 2);
 	i = 0;
-	ft_flag_space(flags, 1);
 	while (++i <= flags->preci - flags->len)
 		flags->ret += write(1, "0", 1);
 	flags->ret += write(1, s, flags->len);
 }
 
-static void	ft_preci_int(t_flags *flags, char *s)
+static void	ft_preci_hexmaj(t_flags *flags, char *s)
 {
 	if (flags->moins)
-		ft_preci_int_moins(flags, s);
+		ft_preci_hexmaj_moins(flags, s);
 	else
-		ft_preci_int_no_moins(flags, s);
+		ft_preci_hexmaj_no_moins(flags, s);
 }
 
-static void	ft_nopreci_int(t_flags *flags, char *s)
+static void	ft_nopreci_hexmaj(t_flags *flags, char *s)
 {
 	int	i;
 
@@ -61,32 +63,34 @@ static void	ft_nopreci_int(t_flags *flags, char *s)
 	{
 		while (++i < flags->width - flags->len)
 			flags->ret += write(1, " ", 1);
-		ft_flag_space(flags, 1);
+		if (flags->hash)
+			flags->ret += write(1, "0X", 2);
 		flags->ret += write(1, s, flags->len);
 	}
 	else if (flags->moins && !flags->zero)
 	{
-		ft_flag_space(flags, 1);
+		if (flags->hash)
+			flags->ret += write(1, "0X", 2);
 		flags->ret += write(1, s, flags->len);
 		i = flags->len;
 		while (++i <= flags->width)
 			flags->ret += write(1, " ", 1);
 	}
 	else
-	{
-		ft_flag_space(flags, 1);
-		while (++i < flags->width - flags->len)
-			flags->ret += write(1, "0", 1);
-		flags->ret += write(1, s, flags->len);
-	}
+		ft_nopreci_hexmaj2(flags, s, i);
 }
 
-void		ft_flags_int(t_flags *flags, char *s)
+void		ft_flags_hexmaj(t_flags *flags, char *s)
 {
-	if (!flags->point)
+	if (flags->hash)
 	{
-		ft_nopreci_int(flags, s);
+		if (flags->width && flags->width > 1)
+			flags->width -= 2;
+		else if (flags->width && flags->width == 1)
+			flags->width = FALSE;
 	}
+	if (!flags->point)
+		ft_nopreci_hexmaj(flags, s);
 	else
-		ft_preci_int(flags, s);
+		ft_preci_hexmaj(flags, s);
 }

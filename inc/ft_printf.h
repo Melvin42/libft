@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 17:37:49 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/27 20:09:18 by melperri         ###   ########.fr       */
+/*   Updated: 2021/04/23 14:13:10 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define BASEHEXMAJ "0123456789ABCDEF"
 
 # include "ft_printf_struct.h"
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 /*

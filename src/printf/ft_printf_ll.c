@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../inc/ft_printf.hh.c                                     :+:      :+:    :+:   */
+/*   ft_printf_ll.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 16:47:11 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/27 19:40:09 by melperri         ###   ########.fr       */
+/*   Created: 2021/01/26 14:18:10 by melperri          #+#    #+#             */
+/*   Updated: 2021/01/27 19:42:16 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-static void	ft_print_signed_char3(t_flags *flags, char d)
+static void	ft_print_ll3(t_flags *flags, long long d)
 {
 	int	i;
 
@@ -35,10 +35,10 @@ static void	ft_print_signed_char3(t_flags *flags, char d)
 	}
 }
 
-static void	ft_print_signed_char2(t_flags *flags, char *s, char d)
+static void	ft_print_ll2(t_flags *flags, char *s, long long d)
 {
 	if (d == 0 && flags->width && flags->point && !flags->preci)
-		ft_print_signed_char3(flags, d);
+		ft_print_ll3(flags, d);
 	else if (d == 0 && !flags->width && flags->point && !flags->preci)
 	{
 		if (flags->plus)
@@ -54,20 +54,20 @@ static void	ft_print_signed_char2(t_flags *flags, char *s, char d)
 		ft_flags_int(flags, s);
 }
 
-void		ft_print_signed_char(va_list ap, t_flags *flags)
+void		ft_print_long_long(va_list ap, t_flags *flags)
 {
-	char	d;
-	int		i;
-	char	*s;
+	long long	d;
+	int			i;
+	char		*s;
 
 	i = -1;
-	d = va_arg(ap, int);
-	s = ft_itoa(d);
+	d = va_arg(ap, long long);
+	s = ft_lltoa(d);
 	flags->len = (int)ft_strlen(s);
 	if (flags->space && flags->width && d >= 0)
 		flags->width--;
 	if (is_flag_on(flags))
-		ft_print_signed_char2(flags, s, d);
+		ft_print_ll2(flags, s, d);
 	else
 	{
 		ft_flag_space(flags, d);
@@ -79,14 +79,14 @@ void		ft_print_signed_char(va_list ap, t_flags *flags)
 	s = NULL;
 }
 
-void		ft_print_hhu(va_list ap, t_flags *flags)
+void		ft_print_ull(va_list ap, t_flags *flags)
 {
-	unsigned char			u;
-	int						i;
-	char					*s;
+	unsigned long long	u;
+	int					i;
+	char				*s;
 
-	u = va_arg(ap, unsigned int);
-	s = ft_utoa(u);
+	u = va_arg(ap, unsigned long long);
+	s = ft_ulltoa(u);
 	flags->len = (int)ft_strlen(s);
 	if (is_flag_on(flags))
 	{
