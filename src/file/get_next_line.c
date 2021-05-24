@@ -6,18 +6,16 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 00:50:58 by melperri          #+#    #+#             */
-/*   Updated: 2021/05/24 16:17:21 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 20:19:57 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/get_next_line.h"
 
-static char	*cpy_line(char *tmp)
+static char	*cpy_line(int i, char *tmp)
 {
-	int		i;
 	char	*line;
 
-	i = -1;
 	if (!tmp)
 	{
 		line = malloc(sizeof(char) * 1);
@@ -45,9 +43,12 @@ static char	*cpy_line(char *tmp)
 
 static int	read_file(t_gnl *gnl, int fd)
 {
-	while ((gnl->ret = read(fd, gnl->buf, BUFFER_SIZE)))
+	while (1)
 	{
-		if (gnl->ret == -1)
+		gnl->ret = read(fd, gnl->buf, BUFFER_SIZE);
+		if (gnl->ret == 0)
+			break ;
+		else if (gnl->ret == -1)
 			return (-1);
 		gnl->buf[gnl->ret] = '\0';
 		if (!gnl->tmp)
@@ -104,7 +105,7 @@ int	get_next_line(int fd, char **line)
 	if (!gnl.tmp)
 		if (read_file(&gnl, fd) == -1)
 			return (-1);
-	*line = cpy_line(gnl.tmp);
+	*line = cpy_line(-1, gnl.tmp);
 	if (is_line(gnl.tmp) > 0)
 		return (1);
 	free(gnl.tmp);
