@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 18:42:26 by melperri          #+#    #+#             */
-/*   Updated: 2021/05/24 16:11:17 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:16:32 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ typedef struct s_gnl
 	char	*tofree;
 }	t_gnl;
 
-char			*cpy_line(char *tmp);
-int				is_line(char *tmp);
-int				read_file(t_gnl *gnl, int fd);
 int				get_next_line(int fd, char **line);
 
 #endif

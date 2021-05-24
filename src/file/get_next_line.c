@@ -6,13 +6,13 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 00:50:58 by melperri          #+#    #+#             */
-/*   Updated: 2021/05/24 16:09:28 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:17:21 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/get_next_line.h"
 
-char	*cpy_line(char *tmp)
+static char	*cpy_line(char *tmp)
 {
 	int		i;
 	char	*line;
@@ -43,7 +43,7 @@ char	*cpy_line(char *tmp)
 	return (line);
 }
 
-int	read_file(t_gnl *gnl, int fd)
+static int	read_file(t_gnl *gnl, int fd)
 {
 	while ((gnl->ret = read(fd, gnl->buf, BUFFER_SIZE)))
 	{
@@ -64,7 +64,7 @@ int	read_file(t_gnl *gnl, int fd)
 	return (0);
 }
 
-int	is_line(char *tmp)
+static int	is_line(char *tmp)
 {
 	int	i;
 
@@ -77,7 +77,7 @@ int	is_line(char *tmp)
 	return (0);
 }
 
-int	len_to_sub(t_gnl *gnl)
+static int	len_to_sub(t_gnl *gnl)
 {
 	gnl->i = -1;
 	while (gnl->tmp[++gnl->i])
