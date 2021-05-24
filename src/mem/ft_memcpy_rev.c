@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 00:28:29 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/06 16:09:19 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:46:40 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	*ft_memcpy_rev(void *dest, const void *src, size_t n)
 	if (n == 0 || dest == src)
 		return (dest);
 	while (n--)
-		((unsigned char	*)dest)[n] = ((unsigned char *)src)[n];
+		((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
 	return (dest);
 }

@@ -22,7 +22,6 @@ LST_DIR		= lst
 MEM_DIR		= mem
 PUT_DIR		= put
 STR_DIR		= str
-PRINTF_DIR	= printf
 
 ## Compilating Utilities
 
@@ -62,14 +61,6 @@ STR_FT	 = ft_split ft_strdup ft_str_is_numeric ft_strlcat ft_strnstr \
 		   ft_str_is_uppercase ft_strlcpy ft_strmapi ft_strrchr ft_substr \
 		   ft_strcpy ft_str_is_lowercase ft_strjoin ft_strlen ft_strncmp \
 		   ft_strtrim
-
-PRINTF_FT= ft_flags ft_printf_convert ft_printf_hexmaj ft_printf_int_plus \
-		   ft_printf_null_addr ft_pars_flags ft_printf_hex_hh \
-		   ft_printf_hexmin2 ft_printf_int_pos ft_printf_short ft_printf_addr \
-		   ft_printf_hex_ll ft_printf_hexmin ft_printf_ll ft_printf_string2 \
-		   ft_printf ft_printf_hex_long ft_printf_hh ft_printf_long \
-		   ft_printf_string ft_printf_convert2 ft_printf_hexmaj2 \
-		   ft_printf_int_neg ft_printf_modifier
 
 ## List of Utilities
 

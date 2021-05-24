@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 18:42:26 by melperri          #+#    #+#             */
-/*   Updated: 2021/02/01 11:43:00 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:11:17 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include "libft.h"
 # include <fcntl.h>
 
-typedef struct	s_gnl
+typedef struct s_gnl
 {
 	char	buf[BUFFER_SIZE + 1];
 	int		ret;
 	char	*tmp;
 	int		i;
 	char	*tofree;
-}				t_gnl;
+}	t_gnl;
 
 char			*cpy_line(char *tmp);
 int				is_line(char *tmp);

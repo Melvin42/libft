@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:59:11 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/26 13:59:13 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:23:54 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*filltab(char *dest, int len, unsigned long long nb, char *base)
 
 static int	ulltoalen(unsigned long long nb, char *base)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (nb > 0)
@@ -39,7 +39,7 @@ static int	ulltoalen(unsigned long long nb, char *base)
 	return (len);
 }
 
-char		*ft_ulltoa_base(unsigned long long nb, char *base)
+char	*ft_ulltoa_base(unsigned long long nb, char *base)
 {
 	int		len;
 	char	*dest;
@@ -47,7 +47,8 @@ char		*ft_ulltoa_base(unsigned long long nb, char *base)
 	len = ulltoalen(nb, base);
 	if (nb == 0)
 		len = 1;
-	if (!(dest = (char *)malloc(sizeof(char) * len + 1)))
+	dest = (char *)malloc(sizeof(char) * len + 1);
+	if (!dest)
 		return (NULL);
 	dest = filltab(dest, len, nb, base);
 	return (dest);

@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 00:50:58 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/07 17:17:40 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:09:28 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*cpy_line(char *tmp)
 	i = -1;
 	if (!tmp)
 	{
-		if (!(line = malloc(sizeof(char) * 1)))
+		line = malloc(sizeof(char) * 1);
+		if (!line)
 			return (NULL);
 		line[0] = '\0';
 		return (line);
@@ -28,7 +29,8 @@ char	*cpy_line(char *tmp)
 	while (tmp[++i])
 		if (tmp[i] == '\n')
 			break ;
-	if (!(line = malloc(sizeof(char) * i + 1)))
+	line = malloc(sizeof(char) * i + 1);
+	if (!line)
 		return (NULL);
 	i = -1;
 	while (tmp[++i])
@@ -41,7 +43,7 @@ char	*cpy_line(char *tmp)
 	return (line);
 }
 
-int		read_file(t_gnl *gnl, int fd)
+int	read_file(t_gnl *gnl, int fd)
 {
 	while ((gnl->ret = read(fd, gnl->buf, BUFFER_SIZE)))
 	{
@@ -49,9 +51,7 @@ int		read_file(t_gnl *gnl, int fd)
 			return (-1);
 		gnl->buf[gnl->ret] = '\0';
 		if (!gnl->tmp)
-		{
 			gnl->tmp = ft_strdup(gnl->buf);
-		}
 		else
 		{
 			gnl->tofree = gnl->tmp;
@@ -64,7 +64,7 @@ int		read_file(t_gnl *gnl, int fd)
 	return (0);
 }
 
-int		is_line(char *tmp)
+int	is_line(char *tmp)
 {
 	int	i;
 
@@ -77,7 +77,7 @@ int		is_line(char *tmp)
 	return (0);
 }
 
-int		len_to_sub(t_gnl *gnl)
+int	len_to_sub(t_gnl *gnl)
 {
 	gnl->i = -1;
 	while (gnl->tmp[++gnl->i])
@@ -86,7 +86,7 @@ int		len_to_sub(t_gnl *gnl)
 	return (gnl->i);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static t_gnl	gnl;
 

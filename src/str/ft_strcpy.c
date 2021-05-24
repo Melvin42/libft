@@ -6,7 +6,7 @@
 /*   By: user42 <melperri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 19:51:44 by user42            #+#    #+#             */
-/*   Updated: 2020/11/18 20:16:59 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:50:07 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcpy(char *dest, const char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i])

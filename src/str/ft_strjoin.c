@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 01:56:30 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 01:56:32 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:02:07 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1)))
+	join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!join)
 		return (NULL);
 	i = 0;
 	while (s1[i])

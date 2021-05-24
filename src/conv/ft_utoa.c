@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:56:40 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 13:43:41 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:21:54 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_utoa(unsigned int n)
 		nb = nb / 10;
 		len++;
 	}
-	if (!(s = malloc(sizeof(char) * len + 1)))
+	s = malloc(sizeof(char) * len + 1);
+	if (!s)
 		return (NULL);
 	s[len] = '\0';
 	nb = n;

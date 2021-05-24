@@ -6,13 +6,13 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 13:49:29 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 13:49:40 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:20:50 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-int		stopatoi(char c, char *base)
+int	stopatoi(char c, char *base)
 {
 	int	i;
 

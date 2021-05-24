@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:31:15 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 14:02:24 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:51:10 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return ((char *)&big[i]);
 		i++;
 	}
-	return ((char *)NULL);
+	return ((char *) NULL);
 }

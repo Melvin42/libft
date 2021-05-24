@@ -6,13 +6,13 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 13:48:49 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 13:49:18 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:21:15 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-int		findchar(char c, char *base)
+int	findchar(char c, char *base)
 {
 	int	i;
 

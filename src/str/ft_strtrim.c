@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 12:39:35 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/17 23:11:28 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:48:58 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** caractères.
 */
 
-static int		ft_isset(char c, char const *set)
+static int	ft_isset(char c, char const *set)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int		ft_isset(char c, char const *set)
 	return (0);
 }
 
-char			*ft_strtrim(char const *s, char const *set)
+char	*ft_strtrim(char const *s, char const *set)
 {
 	char			*str;
 	unsigned int	i;

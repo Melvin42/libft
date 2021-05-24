@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:25:32 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 13:34:15 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:58:43 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static size_t	countword(char const *s, char c)
 	return (count);
 }
 
-static char		**freesplit(char **split, int i)
+static char	**freesplit(char **split, int i)
 {
 	while (i >= 0)
 	{
@@ -47,7 +47,7 @@ static char		**freesplit(char **split, int i)
 	return (split);
 }
 
-static char		**dupword(char const *s, char c, char **split, size_t wordsize)
+static char	**dupword(char const *s, char c, char **split, size_t wordsize)
 {
 	size_t	i;
 	size_t	j;
@@ -58,14 +58,12 @@ static char		**dupword(char const *s, char c, char **split, size_t wordsize)
 	{
 		if (s[i] == c)
 			i++;
-		while ((s[i] != c) && s[i])
-		{
-			i++;
+		while ((s[i] != c) && s[i++])
 			wordsize++;
-		}
 		if (wordsize != 0)
 		{
-			if (!(split[j] = malloc(sizeof(char) * wordsize + 1)))
+			split[j] = malloc(sizeof(char) * wordsize + 1);
+			if (!split[j])
 				return (freesplit(split, j));
 			ft_memcpy(split[j], s + i - wordsize, wordsize);
 			split[j][wordsize] = '\0';
@@ -76,7 +74,7 @@ static char		**dupword(char const *s, char c, char **split, size_t wordsize)
 	return (split);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char		**split;
 	size_t		cmpt;
@@ -85,7 +83,8 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	cmpt = countword(s, c);
-	if (!(split = malloc(sizeof(char *) * (cmpt + 1))))
+	split = malloc(sizeof(char *) * (cmpt + 1));
+	if (!split)
 		return (NULL);
 	wordsize = 0;
 	split = dupword(s, c, split, wordsize);

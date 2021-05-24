@@ -6,13 +6,13 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 13:45:23 by melperri          #+#    #+#             */
-/*   Updated: 2021/01/25 13:45:30 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:29:47 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-int		checkbase(char *base)
+int	checkbase(char *base)
 {
 	int	i;
 	int	j;

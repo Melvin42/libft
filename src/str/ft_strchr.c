@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:25:59 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/16 18:32:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/24 15:49:32 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == c)
-			return ((char	*)s);
+			return ((char *)s);
 		s++;
 	}
 	if (*s == c)

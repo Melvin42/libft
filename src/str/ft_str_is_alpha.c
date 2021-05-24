@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 01:55:15 by melperri          #+#    #+#             */
-/*   Updated: 2020/11/18 01:55:17 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:48:32 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_str_is_alpha(char *str)
 	while (str[i])
 	{
 		if (!((str[i] >= 'A' && str[i] <= 'Z')
-					|| (str[i] >= 'a' && str[i] <= 'z')))
+				|| (str[i] >= 'a' && str[i] <= 'z')))
 			return (0);
 		i++;
 	}

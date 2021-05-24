@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 23:26:18 by melperri          #+#    #+#             */
-/*   Updated: 2020/10/13 15:17:03 by melperri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:20:08 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
-	if (!(ptr = malloc(size * nmemb)))
+	ptr = malloc(size * nmemb);
+	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
